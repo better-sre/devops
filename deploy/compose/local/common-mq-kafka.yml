@@ -7,6 +7,12 @@
 #
 # run:
 #   - docker-compose -f common-mq-kafka.yml up -d
+#   - 服务完全启动好(web UI)可用, 需要等待一段时间
+#
+# web:
+#   - http://127.0.0.1:8000/#/cluster/default
+#   - http://127.0.0.1:8003/#/cluster/kafka-connect-1
+#   - http://127.0.0.1:8001/#/cluster/default
 #
 # dev:
 #   - localhost:9092
@@ -28,9 +34,10 @@ services:
         ZOO_PORT: 2181
         ZOO_SERVERS: server.1=zoo1:2888:3888
     volumes:
-      - ./full-stack/zoo1/data:/data
-      - ./full-stack/zoo1/datalog:/datalog
-
+#      - ./full-stack/zoo1/data:/data
+#      - ./full-stack/zoo1/datalog:/datalog
+      - zoo1_data:/data
+      - zoo1_datalog:/datalog
 
   kafka1:
     image: confluentinc/cp-kafka:5.0.0
@@ -46,7 +53,8 @@ services:
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - ./full-stack/kafka1/data:/var/lib/kafka/data
+#      - ./full-stack/kafka1/data:/var/lib/kafka/data
+      - kafka1_data:/var/lib/kafka/data
     depends_on:
       - zoo1
 
@@ -163,3 +171,15 @@ services:
       SERVER_HTTP_PORT: 9000
     depends_on:
       - zoo1
+
+##########################################################################################
+#                                 自定义依赖:
+##########################################################################################
+
+# 自定义数据卷:
+volumes:
+  #
+  zoo1_data:
+  zoo1_datalog:
+  #
+  kafka1_data:
