@@ -33,9 +33,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root    # root: root
       # project:
-      MYSQL_DATABASE: maneki
-      MYSQL_USER: maneki
-      MYSQL_PASSWORD: maneki
+      MYSQL_DATABASE: dev
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
     # fix utf8:
     command: >
       mysqld
