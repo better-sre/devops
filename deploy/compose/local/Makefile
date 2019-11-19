@@ -9,3 +9,6 @@ up-mq:
 
 up-redis:
 	docker-compose -f common-cache-redis.yml up -d
+
+up-memcached:
+	docker-compose -f common-cache-memcached.yml up -d
