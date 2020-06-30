@@ -8,7 +8,18 @@
 ## k8s:
 
 
-## ref tools:
+## ref:
+
+### docker:
+
+- https://github.com/bitnami
+    - 不少高质量的 docker image
+    - https://github.com/bitnami/bitnami-docker-etcd
+- etcd:
+    - https://github.com/shiguanghuxian/etcd-manage
+    - https://github.com/evildecay/etcdkeeper
+
+### tools:
 
 - https://github.com/krallin/tini
   - A tiny but valid `init` for containers 
