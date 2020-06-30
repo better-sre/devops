@@ -21,8 +21,14 @@ check.etcd:
 	# in container do:
 	#
 	# check:
+	etcdctl cluster-health
+	etcdctl member list
 	etcdctl --write-out=table --endpoints=http://127.0.0.1:2379 member list
-	# write:
+	# v2 write/read:
+	ETCDCTL_API=2 etcdctl set /v2key1 hello
+	ETCDCTL_API=2 etcdctl get /v2key1
+	# v3 write/read:
+	ETCDCTL_API=3 etcdctl put /v3key2 hello
+	ETCDCTL_API=3 etcdctl get /v3key2
 	etcdctl --endpoints=http://127.0.0.1:2379 put foo bar
-	# read:
 	etcdctl --endpoints=http://127.0.0.1:2379 get foo
