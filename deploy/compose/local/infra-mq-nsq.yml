@@ -51,6 +51,22 @@ services:
     ports:
       - 14171:4171
 
+  # pub msg : file log: /tmp
+  nsqlog1:
+    image: nsqio/nsq
+    container_name: nsqlog1
+    command: /nsq_to_file --lookupd-http-address=nsqlookupd:4161 --topic=test --channel=test_ch1 -output-dir=/tmp/nsq/test/ch1
+    depends_on:
+      - nsqd1
+
+  # pub msg: file log: /tmp
+  nsqlog2:
+    image: nsqio/nsq
+    container_name: nsqlog2
+    command: /nsq_to_file --lookupd-http-address=nsqlookupd:4161 --topic=test --channel=test_ch2 -output-dir=/tmp/nsq/test/ch2
+    depends_on:
+      - nsqd2
+
 
 ##########################################################################################
 #                                 自定义依赖:

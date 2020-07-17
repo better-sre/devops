@@ -47,6 +47,9 @@ log.nsq:
 # docker stop:
 ##########################################################
 
+docker.ps:
+	docker ps
+
 down.mq.nsq:
 	docker-compose -f infra-mq-nsq.yml down
 	docker-compose -f infra-mq-nsq.yml ps
@@ -63,7 +66,8 @@ test.nsq:
 
 # api 测试: https://nsq.io/components/nsqd.html
 test.nsq.pub1:
-	curl -d "<test msg>" http://127.0.0.1:14151/pub?topic=test1
+	curl -d "<test msg>" http://127.0.0.1:14151/pub?topic=test
+	curl -d "<test channel 1 msg>" http://127.0.0.1:14151/pub?topic=test&channel=test_ch1
 
 test.nsq.pub2:
 	curl -d "<test msg>" http://127.0.0.1:14152/pub?topic=test2
