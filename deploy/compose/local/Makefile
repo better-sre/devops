@@ -1,7 +1,17 @@
 SHELL := /bin/bash
 
+
 ##########################################################
-# docker:
+# docker cmd:
+##########################################################
+
+# 查询网桥 IP: 用于广播
+docker.net.ip:
+	docker inspect -f '{{ .NetworkSettings.IPAddress }}' lookupd
+
+
+##########################################################
+# docker start:
 ##########################################################
 
 up-mq:
@@ -12,6 +22,44 @@ up-redis:
 
 up-memcached:
 	docker-compose -f common-cache-memcached.yml up -d
+
+up.mq.nsq:
+	docker-compose -f infra-mq-nsq.yml up -d
+	docker-compose -f infra-mq-nsq.yml ps
+
+##########################################################
+# web ui:
+##########################################################
+
+# 管理后台:
+web.ui.nsq:
+	open http://localhost:14171
+
+
+##########################################################
+# log:
+##########################################################
+
+log.nsq:
+	docker-compose -f infra-mq-nsq.yml logs
+
+##########################################################
+# docker stop:
+##########################################################
+
+down.mq.nsq:
+	docker-compose -f infra-mq-nsq.yml down
+	docker-compose -f infra-mq-nsq.yml ps
+
+##########################################################
+# check or test:
+##########################################################
+
+# 服务验证:
+test.nsq:
+	#  container port 4161 端口映射
+	curl http://127.0.0.1:14161/ping
+
 
 # 读写测试: https://www.jianshu.com/p/b851e4e1bec2
 check.etcd:
