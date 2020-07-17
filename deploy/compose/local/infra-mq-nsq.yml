@@ -27,8 +27,8 @@ services:
     depends_on:
       - nsqlookupd
     ports:
-      - 4150
-      - 14151:4151  # msg pub
+      - 14150:4150  # msg pub: tcp
+      - 14151:4151  # msg pub: http api
 
   # data node:
   nsqd2:
@@ -38,8 +38,8 @@ services:
     depends_on:
       - nsqlookupd
     ports:
-      - 4150
-      - 14152:4151 # msg pub
+      - 14154:4150 # msg pub: tcp
+      - 14153:4151 # msg pub: http api
 
   # admin ui:
   nsqadmin:
