@@ -59,6 +59,17 @@ down.mq.nsq:
 test.nsq:
 	#  container port 4161 端口映射
 	curl http://127.0.0.1:14161/ping
+	curl http://127.0.0.1:14161/ping
+
+# api 测试: https://nsq.io/components/nsqd.html
+test.nsq.pub1:
+	curl -d "<test msg>" http://127.0.0.1:14151/pub?topic=test1
+
+test.nsq.pub2:
+	curl -d "<test msg>" http://127.0.0.1:14152/pub?topic=test2
+
+test.nsq.stats:
+	curl http://127.0.0.1:14161/stats
 
 
 # 读写测试: https://www.jianshu.com/p/b851e4e1bec2

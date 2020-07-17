@@ -28,7 +28,7 @@ services:
       - nsqlookupd
     ports:
       - 4150
-      - 4151
+      - 14151:4151  # msg pub
 
   # data node:
   nsqd2:
@@ -39,7 +39,7 @@ services:
       - nsqlookupd
     ports:
       - 4150
-      - 4151
+      - 14152:4151 # msg pub
 
   # admin ui:
   nsqadmin:
