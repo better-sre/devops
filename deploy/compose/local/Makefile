@@ -27,6 +27,10 @@ up.mq.nsq:
 	docker-compose -f infra-mq-nsq.yml up -d
 	docker-compose -f infra-mq-nsq.yml ps
 
+up.trace.jaeger:
+	docker-compose -f infra-trace-jaeger.yml up -d
+	docker-compose -f infra-trace-jaeger.yml ps
+
 ##########################################################
 # web ui:
 ##########################################################
@@ -34,6 +38,10 @@ up.mq.nsq:
 # 管理后台:
 web.ui.nsq:
 	open http://localhost:14171
+
+# 监控后台:
+web.ui.jaeger:
+	open http://localhost:16686
 
 
 ##########################################################
