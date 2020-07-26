@@ -31,6 +31,10 @@ up.trace.jaeger:
 	docker-compose -f infra-trace-jaeger.yml up -d
 	docker-compose -f infra-trace-jaeger.yml ps
 
+up.trace.zipkin:
+	docker-compose -f infra-trace-zipkin.yml up -d
+	docker-compose -f infra-trace-zipkin.yml ps
+
 ##########################################################
 # web ui:
 ##########################################################
@@ -43,6 +47,8 @@ web.ui.nsq:
 web.ui.jaeger:
 	open http://localhost:16686
 
+web.ui.zipkin:
+	open http://localhost:9411
 
 ##########################################################
 # log:
