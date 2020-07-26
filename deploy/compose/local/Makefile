@@ -35,6 +35,11 @@ up.trace.zipkin:
 	docker-compose -f infra-trace-zipkin.yml up -d
 	docker-compose -f infra-trace-zipkin.yml ps
 
+up.monitor.victoriametrics:
+	docker-compose -f infra-monitor-victoriametrics.yml up -d
+	docker-compose -f infra-monitor-victoriametrics.yml ps
+
+
 ##########################################################
 # web ui:
 ##########################################################
@@ -49,6 +54,13 @@ web.ui.jaeger:
 
 web.ui.zipkin:
 	open http://localhost:9411
+
+# 监控:
+web.ui.grafana:
+	open .
+
+web.ui.victoriametrics:
+	open .
 
 ##########################################################
 # log:
@@ -67,6 +79,15 @@ docker.ps:
 down.mq.nsq:
 	docker-compose -f infra-mq-nsq.yml down
 	docker-compose -f infra-mq-nsq.yml ps
+
+down.trace.jaeger:
+	docker-compose -f infra-trace-jaeger.yml down
+	docker-compose -f infra-trace-jaeger.yml ps
+
+down.trace.zipkin:
+	docker-compose -f infra-trace-zipkin.yml down
+	docker-compose -f infra-trace-zipkin.yml ps
+
 
 ##########################################################
 # check or test:
