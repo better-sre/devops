@@ -52,7 +52,7 @@ services:
       - 8429:8429
     volumes:
       - vmagentdata:/vmagentdata
-      - .victoriametrics/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./victoriametrics/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '--promscrape.config=/etc/prometheus/prometheus.yml'
       - '--remoteWrite.url=http://victoriametrics:8428/api/v1/write'
@@ -70,9 +70,8 @@ services:
       - 3000:3000
     volumes:
       - grafanadata:/var/lib/grafana
-      - .victoriametrics/provisioning/:/etc/grafana/provisioning/
-      - .victoriametrics/dashboards/victoriametrics.json:/var/lib/grafana/dashboards/vm.json
-      - .victoriametrics/dashboards/vmagent.json:/var/lib/grafana/dashboards/vmagent.json
+      - ./victoriametrics/provisioning/:/etc/grafana/provisioning/
+      - ./victoriametrics/dashboards/:/var/lib/grafana/dashboards/
     networks:
       - vm_net
     restart: always

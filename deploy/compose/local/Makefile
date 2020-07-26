@@ -88,6 +88,9 @@ down.trace.zipkin:
 	docker-compose -f infra-trace-zipkin.yml down
 	docker-compose -f infra-trace-zipkin.yml ps
 
+down.monitor.victoriametrics:
+	docker-compose -f infra-monitor-victoriametrics.yml down
+	docker-compose -f infra-monitor-victoriametrics.yml ps
 
 ##########################################################
 # check or test:
