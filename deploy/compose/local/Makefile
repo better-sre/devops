@@ -48,7 +48,13 @@ log.eth.main:
 
 # state test:
 test.eth.main:
-  curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+	curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+
+volume.check:
+	docker system df
+	docker volume ls
+	docker volume inspect local_openethereum_main_data
+	docker system df -v | grep openethereum
 
 ##########################################################
 # web ui:
@@ -85,6 +91,12 @@ log.nsq:
 
 docker.ps:
 	docker ps
+
+
+down.eth.main.graceful:
+	docker-compose -f infra-chain-open-ethereum.yml down -t 30  # timeout=30s
+	docker-compose -f infra-chain-open-ethereum.yml ps
+
 
 down.mq.nsq:
 	docker-compose -f infra-mq-nsq.yml down
