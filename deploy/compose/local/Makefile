@@ -39,6 +39,13 @@ up.monitor.victoriametrics:
 	docker-compose -f infra-monitor-victoriametrics.yml up -d
 	docker-compose -f infra-monitor-victoriametrics.yml ps
 
+up.eth.main:
+	docker-compose -f infra-chain-open-ethereum.yml up -d
+	docker-compose -f infra-chain-open-ethereum.yml ps
+
+log.eth.main:
+	docker-compose -f infra-chain-open-ethereum.yml logs -f
+
 
 ##########################################################
 # web ui:
