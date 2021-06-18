@@ -46,6 +46,9 @@ up.eth.main:
 log.eth.main:
 	docker-compose -f infra-chain-open-ethereum.yml logs -f
 
+# state test:
+test.eth.main:
+  curl --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 ##########################################################
 # web ui:
