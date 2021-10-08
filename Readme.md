@@ -1,4 +1,12 @@
 
+# migrate to: 
+
+
+- this repo is archived. 
+- please see: https://github.com/better-tool/config
+
+
+
 # devops
 
 
