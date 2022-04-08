@@ -3,7 +3,9 @@
 
 
 - this repo is archived. 
-- please see: https://github.com/better-tool/config
+- please see: 
+    - https://github.com/better-sre/config
+
 
 
 
